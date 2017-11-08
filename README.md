@@ -19,7 +19,7 @@ This is just a nice wrapper around the Yahoo Currency web service. But I've adde
 ![alt WPF DEMO](https://herbertdotlausmann.files.wordpress.com/2017/11/yahoo-currency.gif)
 
 ### Using the code
-Bellow I show you some example of how using this API in the code behind (you use directly in XAML as well, see WPF DEMO)
+Bellow I show you some example of how using this API in the code behind (you could use it directly in XAML as well, see WPF DEMO)
 ```csharp
         public static async Task AsyncExample()
         {
