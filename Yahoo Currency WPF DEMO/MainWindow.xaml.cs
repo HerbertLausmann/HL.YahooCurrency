@@ -23,7 +23,6 @@ namespace Yahoo_Currency_WPF_DEMO
         public MainWindow()
         {
             InitializeComponent();
-            HL.YahooCurrency.Currency currency = new HL.YahooCurrency.Currency();
         }
 
         /// <summary>
