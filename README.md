@@ -12,7 +12,7 @@ This is just a nice wrapper around the Yahoo Currency web service. But I've adde
    -The currency country's flag icon.
    -The currency's unicode symbol.
    -The currency's universal code.
-5. Multi platform support. Because this is a .NET CORE (2) library, you can use for XAMARIN, MONO, Win Forms, WPF and all platforms and frameworks support .NET CORE/STANDARD
+5. Multi platform support. Because this is a .NET CORE (2) library, you can use for XAMARIN, MONO, Win Forms, WPF and all platforms and frameworks supporting .NET CORE/STANDARD
 
 ### A little demo in WPF:
 
