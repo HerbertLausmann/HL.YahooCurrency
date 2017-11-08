@@ -1,0 +1,59 @@
+﻿<Window x:Class="Yahoo_Currency_WPF_DEMO.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Yahoo_Currency_WPF_DEMO"
+xmlns:yahoo="clr-namespace:HL.YahooCurrency;assembly=HL.YahooCurrency"
+        mc:Ignorable="d"
+        Title="HL.YahooWeather WPF DEMO" Height="350" Width="600" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <local:InvertBoolConverter x:Key="InvertBoolConverter"/>
+        <local:BytesToBitmapImageValueConverter x:Key="BytesToBitmapImageValueConverter"/>
+        <local:StringToDoubleConverter x:Key="StringToDoubleConverter"/>
+    </Window.Resources>
+    <Window.DataContext>
+        <yahoo:Currency/>
+    </Window.DataContext>
+    <Grid IsEnabled="{Binding IsLoading, Converter={StaticResource InvertBoolConverter}, Mode=OneWay}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <GridSplitter HorizontalAlignment="Center" Margin="0" Grid.ColumnSpan="2" Width="1" Background="Black"/>
+        <Label Content="Input" HorizontalAlignment="Center" Margin="0,15,0,0" VerticalAlignment="Top" FontSize="18.667"/>
+        <Label Content="Output" HorizontalAlignment="Center" Margin="0,15,0,0" VerticalAlignment="Top" FontSize="18.667" Grid.Column="1"/>
+        <TextBox Height="23" Margin="10,102.6,10,0" TextWrapping="Wrap" Text="{Binding SourceValue, BindsDirectlyToSource=True, Converter={StaticResource StringToDoubleConverter}, IsAsync=True, Mode=OneWayToSource, ValidatesOnNotifyDataErrors=False, UpdateSourceTrigger=PropertyChanged, TargetNullValue=0}" VerticalAlignment="Top" Width="238.3" PreviewTextInput="TextBox_PreviewTextInput" MaxLength="16"/>
+        <ComboBox Margin="10,75.64,10,0" VerticalAlignment="Top" Width="238.3" Grid.Column="1" ItemsSource="{Binding Units}" SelectedIndex="0" SelectedValue="{Binding OutputUnit, Mode=OneWayToSource}" IsSynchronizedWithCurrentItem="False" Loaded="ComboBox_Loaded"/>
+        <ComboBox Margin="10,75.64,10,0" VerticalAlignment="Top" Width="238.3" ItemsSource="{Binding Units}" SelectedIndex="0" SelectedValue="{Binding SourceUnit, Mode=OneWayToSource}" IsSynchronizedWithCurrentItem="False" TabIndex="2147483646" MinWidth="10" Loaded="ComboBox_Loaded"/>
+        <TextBox Height="23" Margin="10,102.6,10,0" TextWrapping="Wrap" Text="{Binding OutputValue, Mode=OneWay, StringFormat=N2}" VerticalAlignment="Top" Width="238.3" Grid.Column="1" IsReadOnly="True"/>
+        <GroupBox Header="Information" Margin="10,130.6,10,10">
+            <Grid>
+                <Image HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="88" Source="{Binding SourceUnitInfo.Flag, Converter={StaticResource BytesToBitmapImageValueConverter}}"/>
+                <Label Content="{Binding SourceUnitInfo.Country, Mode=OneWay}" HorizontalAlignment="Left" Margin="93,15.04,0,0" VerticalAlignment="Top"/>
+                <Label Content="Currency: " HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top"/>
+                <Label Content="Currency Symbol:" HorizontalAlignment="Left" Margin="10,90.96,0,0" VerticalAlignment="Top"/>
+                <Label Content="{Binding SourceUnitInfo.Currency, Mode=OneWay}" HorizontalAlignment="Left" Margin="77.87,60,0,0" VerticalAlignment="Top"/>
+                <Label Content="{Binding SourceUnitInfo.Symbol, Mode=OneWay}" HorizontalAlignment="Left" Margin="112.376,90.96,0,0" VerticalAlignment="Top"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Information" Margin="10,130.6,10,10" Grid.Column="1">
+            <Grid>
+                <Image HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="88" Source="{Binding OutputUnitInfo.Flag, Converter={StaticResource BytesToBitmapImageValueConverter}}"/>
+                <Label Content="{Binding OutputUnitInfo.Country, Mode=OneWay}" HorizontalAlignment="Left" Margin="93,15.04,0,0" VerticalAlignment="Top"/>
+                <Label Content="Currency: " HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top"/>
+                <Label Content="Currency Symbol:" HorizontalAlignment="Left" Margin="10,90.96,0,0" VerticalAlignment="Top"/>
+                <Label Content="{Binding OutputUnitInfo.Currency, Mode=OneWay}" HorizontalAlignment="Left" Margin="72.87,60,0,0" VerticalAlignment="Top"/>
+                <Label Content="{Binding OutputUnitInfo.Symbol, Mode=OneWay}" HorizontalAlignment="Left" Margin="112.376,90.96,0,0" VerticalAlignment="Top"/>
+            </Grid>
+        </GroupBox>
+        <!--IMPORTANT: THE CODE BELLOW CAUSES A CONSTANT 6% CPU TIME-->
+        <Border BorderThickness="1" Grid.ColumnSpan="2" Background="WhiteSmoke" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}">
+            <Grid>
+                <TextBlock Text="Loading Data" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22"/>
+                <ProgressBar HorizontalAlignment="Center" Height="10" VerticalAlignment="Center" Width="140" Margin="0,54,0,0" IsIndeterminate="True"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

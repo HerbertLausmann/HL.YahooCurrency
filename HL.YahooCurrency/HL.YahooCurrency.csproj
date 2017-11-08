@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyVersion>1.0.24.6521</AssemblyVersion>
+    <FileVersion>1.0.24.6521</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="InfoDataBase.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="InfoDataBase.xml" />
+  </ItemGroup>
+
+</Project>

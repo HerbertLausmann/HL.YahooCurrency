@@ -1,0 +1,9 @@
+﻿<Application x:Class="Yahoo_Currency_WPF_DEMO.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Yahoo_Currency_WPF_DEMO"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
