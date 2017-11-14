@@ -1,13 +1,13 @@
 ﻿/*
- * HL.YahooCurrency is a .NET Wrapper for the Yahoo Finances WebService!
- * It working by sending a request to Yahoo Services using YQL.
- * The web service returns a XML response that is parsed by this wrapper.
+ * HL.YahooCurrency is a .NET API that uses YQL for retreiving data from Yahoo APIs!
+ * It works by sending a request to Yahoo Services using YQL.
+ * The service returns a XML response that is parsed by this API.
  * This API runs on .NET CORE 2.0.
  * 
  * You can modify this code as you want, but please, keep this header as it is!
- * All the rights for the Yahoo Finances Services belongs to Yahoo Holdings, Inc.
+ * All the rights for the Yahoo API's belongs to Yahoo Holdings, Inc.
  * 
- * This Wrapper has been developed by Herbert Lausmann!
+ * This API has been developed by Herbert Lausmann!
  * 
  * Herbert Lausmann
  * November 2017
